@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">RetrofitCRUD</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="account">Don\'t have any Account?</string>
+    <string name="signUp">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="phone">Phone</string>
+    <string name="addUsers">Add Users</string>
+    <string name="viewAllUsers">View All Users</string>
+    <string name="nameEdt">Name</string>
+    <string name="address">Address</string>
+    <string name="submitBtn">Submit</string>
+    <string name="nameTv">Name</string>
+    <string name="emailTv">Email</string>
+    <string name="phoneTv">Phone</string>
+    <string name="addressTv">Address</string>
+    <string name="delete">Delete</string>
+    <string name="detail">Details</string>
+    <string name="userList">User List</string>
+    <string name="submit">Submit</string>
+    <string name="update">Update</string>
+</resources>
