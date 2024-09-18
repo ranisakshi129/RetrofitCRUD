@@ -51,7 +51,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteStudent(student.getId(), position);
+                userListButtonsClickListener.onDeleteButtonClicked(student);
             }
         });
 
@@ -73,32 +73,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         }
     }
 
-    private void deleteStudent(int id, int position) {
-        Call<AddStudentsResponseModel> call = RetrofitClient.getInstance().getApiInterface().deleteStudent(id);
-        call.enqueue(new Callback<AddStudentsResponseModel>() {
-            @Override
-            public void onResponse(Call<AddStudentsResponseModel> call, Response<AddStudentsResponseModel> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    AddStudentsResponseModel responseModel = response.body();
-                    if (responseModel.getStatus()) {
-                        Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
-                        studentList.remove(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, studentList.size());
-                    } else {
-                        Toast.makeText(context, "Failed to delete student", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(context, "Failed to delete student", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AddStudentsResponseModel> call, Throwable t) {
-                Toast.makeText(context, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     public void setOnButtonClickListener(UserListButtonsClickListener userListButtonsClickListener) {
         this.userListButtonsClickListener = userListButtonsClickListener;

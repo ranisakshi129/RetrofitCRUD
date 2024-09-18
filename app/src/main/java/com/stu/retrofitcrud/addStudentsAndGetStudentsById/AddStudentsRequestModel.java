@@ -5,6 +5,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class AddStudentsRequestModel {
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @SerializedName("id")
+@Expose
+private int id;
+
 @SerializedName("name")
 @Expose
 private String name;

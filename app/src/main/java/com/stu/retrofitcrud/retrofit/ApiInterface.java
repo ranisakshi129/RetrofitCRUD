@@ -25,8 +25,8 @@ public interface ApiInterface {
         @GET("/api/getAllStudents")
         Call<GetStudentsResponseModel> getAllStudents();
 
-        @PATCH("/api/updateStudent/{id}")
-        Call<AddStudentsResponseModel> updateStudent(@Path("id") int id, @Body AddStudentsRequestModel addStudentsRequestModel);
+        @POST("/api/updateStudent")
+        Call<AddStudentsResponseModel> updateStudent(@Body AddStudentsRequestModel addStudentsRequestModel);
 
         @DELETE("/api/deleteStudent/{id}")
         Call<AddStudentsResponseModel> deleteStudent(@Path("id") Integer id );

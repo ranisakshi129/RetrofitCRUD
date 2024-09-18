@@ -67,7 +67,8 @@ public class CreateStudentActivity extends AppCompatActivity {
                 if (studentId == -1) {
                     addStudent(addStudentsRequestModel);
                 } else {
-                    updateStudent(studentId, addStudentsRequestModel);
+                    addStudentsRequestModel.setId(studentId);
+                    updateStudent(addStudentsRequestModel);
                 }
             }
         });
@@ -88,8 +89,8 @@ public class CreateStudentActivity extends AppCompatActivity {
         });
     }
 
-    private void updateStudent(int id, AddStudentsRequestModel addStudentsRequestModel) {
-        Call<AddStudentsResponseModel> call = RetrofitClient.getInstance().getApiInterface().updateStudent(id, addStudentsRequestModel);
+    private void updateStudent(AddStudentsRequestModel addStudentsRequestModel) {
+        Call<AddStudentsResponseModel> call = RetrofitClient.getInstance().getApiInterface().updateStudent(addStudentsRequestModel);
         call.enqueue(new Callback<AddStudentsResponseModel>() {
             @Override
             public void onResponse(Call<AddStudentsResponseModel> call, Response<AddStudentsResponseModel> response) {

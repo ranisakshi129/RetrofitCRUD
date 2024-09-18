@@ -37,7 +37,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent editUserIntent=new Intent(DetailActivity.this,CreateStudentActivity.class);
-                editUserIntent.putExtra("id",intent.getLongExtra("studentId",0));
+                editUserIntent.putExtra("id",intent.getIntExtra("studentId",0));
                 editUserIntent.putExtra("name",intent.getStringExtra("name"));
                 editUserIntent.putExtra("phone",intent.getStringExtra("phone"));
                 editUserIntent.putExtra("email",intent.getStringExtra("email"));
