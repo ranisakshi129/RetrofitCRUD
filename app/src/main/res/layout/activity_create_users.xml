@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:gravity="center"
-    tools:context=".activities.CreateUsersActivity">
+    tools:context=".activities.CreateStudentActivity">
 
     <ImageView
         android:id="@+id/personIv"

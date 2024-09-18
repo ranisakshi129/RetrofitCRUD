@@ -1,19 +1,34 @@
-package com.stu.retrofitcrud.model;
+package com.stu.retrofitcrud.getStudents.model;
 
-public class UserResponseModel {
 
-    private int image;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+
+public class GetStudentsListModel{
+
+    @SerializedName("id")
+    @Expose
+    private Integer id;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("email")
+    @Expose
     private String email;
+    @SerializedName("phone")
+    @Expose
     private String phone;
+    @SerializedName("address")
+    @Expose
     private String address;
 
-    public int getImage() {
-        return image;
+    public Integer getId() {
+        return id;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -47,4 +62,5 @@ public class UserResponseModel {
     public void setAddress(String address) {
         this.address = address;
     }
+
 }
