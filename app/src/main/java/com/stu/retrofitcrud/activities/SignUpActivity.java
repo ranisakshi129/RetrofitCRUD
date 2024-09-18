@@ -9,11 +9,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.stu.retrofitcrud.R;
+import com.stu.retrofitcrud.ui.login.LoginActivity;
 import com.stu.retrofitcrud.utils.CommonMethods;
 
 public class SignUpActivity extends AppCompatActivity {

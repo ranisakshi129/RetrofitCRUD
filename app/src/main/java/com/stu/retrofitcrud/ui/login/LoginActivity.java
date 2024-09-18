@@ -1,17 +1,20 @@
-package com.stu.retrofitcrud.activities;
+package com.stu.retrofitcrud.ui.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.stu.retrofitcrud.R;
-import com.stu.retrofitcrud.login.model.LoginRequestModel;
-import com.stu.retrofitcrud.login.model.LoginResponseModel;
+import com.stu.retrofitcrud.activities.HomeActivity;
+import com.stu.retrofitcrud.activities.SignUpActivity;
+import com.stu.retrofitcrud.ui.login.model.LoginRequestModel;
+import com.stu.retrofitcrud.ui.login.model.LoginResponseModel;
 import com.stu.retrofitcrud.utils.RetrofitClient;
 
 import retrofit2.Call;
@@ -21,6 +24,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     private EditText emailEdt, passwordEdt;
     private Button loginBtn, signUpBtn;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEdt = findViewById(R.id.passwordEdt);
         loginBtn = findViewById(R.id.loginBtn);
         signUpBtn = findViewById(R.id.signUpBtn);
+        progressBar = findViewById(R.id.progressBar);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,20 +45,27 @@ public class LoginActivity extends AppCompatActivity {
                 loginRequest.setEmail(emailEdt.getText().toString());
                 loginRequest.setPassword(passwordEdt.getText().toString());
                 Call<LoginResponseModel> call = RetrofitClient.getInstance().getApiInterface().loginUser(loginRequest);
+
+                progressBar.setVisibility(View.VISIBLE);
                 call.enqueue(new Callback<LoginResponseModel>() {
                     @Override
                     public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
+                        progressBar.setVisibility(View.GONE);
+
                         if (response.isSuccessful()) {
                             LoginResponseModel loginResponse = response.body();
                             if (loginResponse.getStatus()) {
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(intent);
-                                Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             }
+
+                            Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
                         }
                     }
                     @Override
                     public void onFailure(Call<LoginResponseModel> call, Throwable t) {
+                        progressBar.setVisibility(View.GONE);
 
                     }
                 });

@@ -1,10 +1,14 @@
 package com.stu.retrofitcrud.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class CommonMethods {
+
+    private static ProgressDialog progressDialog;
 
     public static Boolean validateLoginCredentials(Context context, String email, String password) {
 
@@ -18,11 +22,10 @@ public class CommonMethods {
         } else if (password.isEmpty()) {
             Toast.makeText(context, "Password Field cannot be empty", Toast.LENGTH_SHORT).show();
             return false;
-        } else if(!password.matches("^.{6,}$")) {
+        } else if (!password.matches("^.{6,}$")) {
             Toast.makeText(context, "Enter atleast 6 digits password", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -46,10 +49,10 @@ public class CommonMethods {
         } else if (!phone.matches("^[+][0-9]{10,13}$")) {
             Toast.makeText(context, "Correct Format : +91XXXXXXXXXX", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (password.isEmpty()  || confirmPassword.isEmpty()){
+        } else if (password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(context, "Password Field cannot be empty", Toast.LENGTH_SHORT).show();
             return false;
-        } else if(!password.matches("^.{6,}$") &&  !confirmPassword.matches("^.{6,}$")) {
+        } else if (!password.matches("^.{6,}$") && !confirmPassword.matches("^.{6,}$")) {
             Toast.makeText(context, "Enter atleast 6 digits password", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!password.matches(confirmPassword)) {
@@ -59,15 +62,32 @@ public class CommonMethods {
         return true;
     }
 
-    public static Boolean checkCredentials(Context context,String email,String intentEmail, String password, String intentPassword){
-        if(!email.matches(intentEmail)){
+    public static Boolean checkCredentials(Context context, String email, String intentEmail, String password, String intentPassword) {
+        if (!email.matches(intentEmail)) {
             Toast.makeText(context, "Email not matched", Toast.LENGTH_SHORT).show();
             return false;
-        }else if(!password.matches(intentPassword)){
+        } else if (!password.matches(intentPassword)) {
             Toast.makeText(context, "Password not matched", Toast.LENGTH_SHORT).show();
             return false;
-        }else{
+        } else {
             return true;
         }
     }
+
+    public static void showToast(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
+
+    public static void showProgressBar(Context context) {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+
+    public void hideProgressBar() {
+        if (progressDialog != null)
+            progressDialog.dismiss();
+    }
+}

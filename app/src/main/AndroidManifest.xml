@@ -28,13 +28,13 @@
             android:name=".activities.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

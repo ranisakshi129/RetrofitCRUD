@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud.login.model;
+package com.stu.retrofitcrud.ui.login.model;
 
 public class LoginRequestModel {
 

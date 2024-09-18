@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud;
+package com.stu.retrofitcrud.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,10 +8,9 @@ import android.os.Handler;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.stu.retrofitcrud.R;
 import com.stu.retrofitcrud.activities.HomeActivity;
-import com.stu.retrofitcrud.activities.LoginActivity;
-
-import java.security.PrivateKey;
+import com.stu.retrofitcrud.ui.login.LoginActivity;
 
 
 public class SplashActivity extends AppCompatActivity {

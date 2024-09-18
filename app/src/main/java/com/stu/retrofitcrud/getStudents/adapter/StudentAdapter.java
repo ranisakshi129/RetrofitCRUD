@@ -16,6 +16,7 @@ import com.stu.retrofitcrud.R;
 import com.stu.retrofitcrud.activities.DetailActivity;
 import com.stu.retrofitcrud.addStudentsAndGetStudentsById.AddStudentsResponseModel;
 import com.stu.retrofitcrud.getStudents.model.GetStudentsListModel;
+import com.stu.retrofitcrud.interfaces.UserListButtonsClickListener;
 import com.stu.retrofitcrud.utils.RetrofitClient;
 
 import java.util.List;
@@ -27,16 +28,14 @@ import retrofit2.Response;
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
     List<GetStudentsListModel> studentList;
     Context context;
+    UserListButtonsClickListener userListButtonsClickListener;
 
-    public StudentAdapter(List<GetStudentsListModel> studentList){
-        this.studentList=studentList;
-    }
     @NonNull
     @Override
     public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_student,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_student, parent, false);
         return new StudentViewHolder(view);
     }
 
@@ -59,25 +58,19 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         holder.detailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer studentId=holder.userId.getId();
-                String name=holder.nameTv.getText().toString();
-                String email=holder.emailTv.getText().toString();
-                String phone=holder.phoneTv.getText().toString();
-                String address=holder.addressTv.getText().toString();
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("studentId",studentId);
-                intent.putExtra("name",name);
-                intent.putExtra("email",email);
-                intent.putExtra("phone",phone);
-                intent.putExtra("address",address);
-                context.startActivity(intent);
+                userListButtonsClickListener.onDetailButtonClicked(student);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return studentList.size();
+        if (studentList==null) {
+            return 0;
+        } else {
+            return studentList.size();
+
+        }
     }
 
     private void deleteStudent(int id, int position) {
@@ -107,19 +100,29 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         });
     }
 
-    public class StudentViewHolder extends RecyclerView.ViewHolder{
+    public void setOnButtonClickListener(UserListButtonsClickListener userListButtonsClickListener) {
+        this.userListButtonsClickListener = userListButtonsClickListener;
+    }
+
+    public void setStudentList(List<GetStudentsListModel> studentList) {
+        this.studentList = studentList;
+        notifyDataSetChanged();
+    }
+
+    public class StudentViewHolder extends RecyclerView.ViewHolder {
         TextView userId;
-        TextView nameTv,emailTv,phoneTv,addressTv;
-        Button deleteBtn,detailBtn;
+        TextView nameTv, emailTv, phoneTv, addressTv;
+        Button deleteBtn, detailBtn;
+
         public StudentViewHolder(@NonNull View itemView) {
             super(itemView);
-            emailTv=itemView.findViewById(R.id.emailTv);
-            nameTv=itemView.findViewById(R.id.nameTv);
-            phoneTv=itemView.findViewById(R.id.phoneTv);
-            addressTv=itemView.findViewById(R.id.addressTv);
-            userId=itemView.findViewById(R.id.idTv);
-            deleteBtn=itemView.findViewById(R.id.deleteBtn);
-            detailBtn=itemView.findViewById(R.id.detailBtn);
+            emailTv = itemView.findViewById(R.id.emailTv);
+            nameTv = itemView.findViewById(R.id.nameTv);
+            phoneTv = itemView.findViewById(R.id.phoneTv);
+            addressTv = itemView.findViewById(R.id.addressTv);
+            userId = itemView.findViewById(R.id.idTv);
+            deleteBtn = itemView.findViewById(R.id.deleteBtn);
+            detailBtn = itemView.findViewById(R.id.detailBtn);
         }
     }
 }
