@@ -1,5 +1,6 @@
 package com.stu.retrofitcrud.ui.login;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.stu.retrofitcrud.activities.HomeActivity;
 import com.stu.retrofitcrud.activities.SignUpActivity;
 import com.stu.retrofitcrud.ui.login.model.LoginRequestModel;
 import com.stu.retrofitcrud.ui.login.model.LoginResponseModel;
+import com.stu.retrofitcrud.utils.Constants;
 import com.stu.retrofitcrud.utils.RetrofitClient;
 
 import retrofit2.Call;
@@ -40,10 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String email=emailEdt.getText().toString().trim();
+                String password=passwordEdt.getText().toString().trim();
 
                 LoginRequestModel loginRequest = new LoginRequestModel();
-                loginRequest.setEmail(emailEdt.getText().toString());
-                loginRequest.setPassword(passwordEdt.getText().toString());
+                loginRequest.setEmail(email);
+                loginRequest.setPassword(password);
+
                 Call<LoginResponseModel> call = RetrofitClient.getInstance().getApiInterface().loginUser(loginRequest);
 
                 progressBar.setVisibility(View.VISIBLE);
@@ -55,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             LoginResponseModel loginResponse = response.body();
                             if (loginResponse.getStatus()) {
+                                SharedPrefManager.getInstance(LoginActivity.this).saveUser(email, password);
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(intent);
                             }
@@ -81,5 +87,14 @@ public class LoginActivity extends AppCompatActivity {
 
         });
     }
+
+
+//    public void saveUser(String email, String password) {
+//        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_NAME,MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString(Constants.ADMIN_EMAIL, email);
+//        editor.putString(Constants.ADMIN_PASSWORD, password);
+//        editor.apply();
+//    }
 }
 

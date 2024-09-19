@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.stu.retrofitcrud.R;
 import com.stu.retrofitcrud.activities.HomeActivity;
 import com.stu.retrofitcrud.ui.login.LoginActivity;
+import com.stu.retrofitcrud.ui.login.SharedPrefManager;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -19,21 +20,33 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+
         setContentView(R.layout.activity_splash);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    SharedPreferences sharedPreferences=getSharedPreferences("Login", MODE_PRIVATE);
-                    Boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
-                    Intent intent;
-                    if(isLoggedIn) {
-                        intent = new Intent(SplashActivity.this, HomeActivity.class);
+//                    SharedPreferences sharedPreferences=getSharedPreferences("Login", MODE_PRIVATE);
+//                    Boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+//                    Intent intent;
+//                    if(isLoggedIn) {
+//                        intent = new Intent(SplashActivity.this, HomeActivity.class);
+//                    }
+//                    else{
+//                        String email=sharedPreferences.getBoolean()
+//                        intent=new Intent(SplashActivity.this, LoginActivity.class);
+//                    }
+//                    startActivity(intent);
+//                    finish();
+
+                    if (SharedPrefManager.getInstance(SplashActivity.this).isLoggedIn()) {
+                        Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(intent);
                     }
-                    else{
-                        intent=new Intent(SplashActivity.this, LoginActivity.class);
-                    }
-                    startActivity(intent);
                     finish();
                 }
             }, 3000);
