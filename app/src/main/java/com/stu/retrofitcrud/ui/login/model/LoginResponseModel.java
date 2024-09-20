@@ -2,7 +2,7 @@ package com.stu.retrofitcrud.ui.login.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.stu.retrofitcrud.model.StudentResponse;
+import com.stu.retrofitcrud.ui.signup.model.StudentResponse;
 
 public class LoginResponseModel {
 

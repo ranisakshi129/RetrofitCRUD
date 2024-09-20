@@ -1,6 +1,6 @@
 package com.stu.retrofitcrud.interfaces;
 
-import com.stu.retrofitcrud.getStudents.model.GetStudentsListModel;
+import com.stu.retrofitcrud.ui.getStudents.model.GetStudentsListModel;
 
 public interface UserListButtonsClickListener {
     void onDetailButtonClicked(GetStudentsListModel student);

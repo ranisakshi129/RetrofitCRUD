@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud.addStudentsAndGetStudentsById;
+package com.stu.retrofitcrud.ui.addstudentsandgetstudentsbyid.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

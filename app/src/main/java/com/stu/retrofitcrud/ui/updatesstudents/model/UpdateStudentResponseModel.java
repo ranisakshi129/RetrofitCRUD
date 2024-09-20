@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud.updateStudents.model;
+package com.stu.retrofitcrud.ui.updatesstudents.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

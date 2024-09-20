@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud.model;
+package com.stu.retrofitcrud.ui.signup.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

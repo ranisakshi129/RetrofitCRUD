@@ -1,29 +1,22 @@
-package com.stu.retrofitcrud.getStudents.adapter;
+package com.stu.retrofitcrud.ui.getStudents.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.stu.retrofitcrud.R;
-import com.stu.retrofitcrud.activities.DetailActivity;
-import com.stu.retrofitcrud.addStudentsAndGetStudentsById.AddStudentsResponseModel;
-import com.stu.retrofitcrud.getStudents.model.GetStudentsListModel;
+import com.stu.retrofitcrud.ui.getStudents.model.GetStudentsListModel;
 import com.stu.retrofitcrud.interfaces.UserListButtonsClickListener;
-import com.stu.retrofitcrud.utils.RetrofitClient;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
     List<GetStudentsListModel> studentList;
@@ -73,7 +66,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         }
     }
 
-
     public void setOnButtonClickListener(UserListButtonsClickListener userListButtonsClickListener) {
         this.userListButtonsClickListener = userListButtonsClickListener;
     }
@@ -87,7 +79,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         TextView userId;
         TextView nameTv, emailTv, phoneTv, addressTv;
         Button deleteBtn, detailBtn;
-
+        ProgressBar deleteStudentPb;
         public StudentViewHolder(@NonNull View itemView) {
             super(itemView);
             emailTv = itemView.findViewById(R.id.emailTv);
@@ -97,6 +89,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
             userId = itemView.findViewById(R.id.idTv);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);
             detailBtn = itemView.findViewById(R.id.detailBtn);
+            deleteStudentPb=itemView.findViewById(R.id.deleteStudentPb);
         }
     }
 }

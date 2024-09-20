@@ -7,14 +7,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context=".activities.HomeActivity">
+    tools:context=".ui.home.HomeActivity">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="Welcome "/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="30dp"
+       android:orientation="horizontal">
+
+       <ImageView
+           android:layout_width="30dp"
+           android:layout_height="40dp"
+           android:src="@drawable/baseline_menu_24"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="20dp"
+           android:textSize="20dp"
+           android:text="Welcome to Home Page"/>
+
+   </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -39,7 +53,7 @@
             android:id="@+id/viewAllUsersBtn"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="30dp"
             android:background="@color/grey"
             android:text="@string/viewAllUsers"/>
 

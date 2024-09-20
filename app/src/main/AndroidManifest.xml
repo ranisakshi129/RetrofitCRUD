@@ -16,22 +16,22 @@
         android:theme="@style/Theme.RetrofitCRUD"
         tools:targetApi="31">
         <activity
-            android:name=".activities.DetailActivity"
+            android:name=".ui.updatesstudents.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.UserListActivity"
+            android:name=".ui.getStudents.StudentListActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.CreateStudentActivity"
+            android:name=".ui.addstudentsandgetstudentsbyid.CreateStudentActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.SignUpActivity"
+            android:name=".ui.signup.SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SplashActivity"

@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud.getStudents.model;
+package com.stu.retrofitcrud.ui.getStudents.model;
 
 
 import com.google.gson.annotations.Expose;

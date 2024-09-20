@@ -1,9 +1,9 @@
-package com.stu.retrofitcrud.deleteStudents;
+package com.stu.retrofitcrud.ui.addstudentsandgetstudentsbyid.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DeleteStudentResponseModel {
+public class AddStudentsResponseModel {
 
 @SerializedName("status")
 @Expose
@@ -13,7 +13,7 @@ private Boolean status;
 private String message;
 @SerializedName("data")
 @Expose
-private Object data;
+private Data data;
 
 public Boolean getStatus() {
 return status;
@@ -31,12 +31,13 @@ public void setMessage(String message) {
 this.message = message;
 }
 
-public Object getData() {
+public Data getData() {
 return data;
 }
 
-public void setData(Object data) {
+public void setData(Data data) {
 this.data = data;
 }
 
 }
+

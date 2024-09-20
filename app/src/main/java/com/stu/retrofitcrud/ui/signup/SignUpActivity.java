@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud.activities;
+package com.stu.retrofitcrud.ui.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                     intent.putExtra("email",email);
                     intent.putExtra("password",password);
-                    Toast.makeText(SignUpActivity.this, "User signup Successfully", Toast.LENGTH_SHORT).show();
+                    CommonMethods.showToast(SignUpActivity.this,"User signUp successfully");
                     startActivity(intent);
                     finish();
                 }

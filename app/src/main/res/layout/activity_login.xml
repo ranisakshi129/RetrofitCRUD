@@ -15,6 +15,7 @@
        android:layout_height="match_parent"
        android:gravity="center"
        android:orientation="vertical">
+
        <ImageView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:textSize="20dp"
+           android:inputType="textEmailAddress"
            android:hint="@string/email"/>
 
        <EditText
@@ -32,6 +34,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:textSize="20dp"
+           android:inputType="numberPassword"
            android:hint="@string/password"/>
 
        <Button

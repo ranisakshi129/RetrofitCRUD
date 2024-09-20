@@ -1,4 +1,4 @@
-package com.stu.retrofitcrud.model;
+package com.stu.retrofitcrud.ui.signup.model;
 
 public class StudentResponse {
 

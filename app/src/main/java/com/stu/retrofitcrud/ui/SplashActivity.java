@@ -1,7 +1,6 @@
 package com.stu.retrofitcrud.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -9,7 +8,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.stu.retrofitcrud.R;
-import com.stu.retrofitcrud.activities.HomeActivity;
+import com.stu.retrofitcrud.ui.home.HomeActivity;
 import com.stu.retrofitcrud.ui.login.LoginActivity;
 import com.stu.retrofitcrud.ui.login.SharedPrefManager;
 
@@ -27,18 +26,6 @@ public class SplashActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-//                    SharedPreferences sharedPreferences=getSharedPreferences("Login", MODE_PRIVATE);
-//                    Boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
-//                    Intent intent;
-//                    if(isLoggedIn) {
-//                        intent = new Intent(SplashActivity.this, HomeActivity.class);
-//                    }
-//                    else{
-//                        String email=sharedPreferences.getBoolean()
-//                        intent=new Intent(SplashActivity.this, LoginActivity.class);
-//                    }
-//                    startActivity(intent);
-//                    finish();
 
                     if (SharedPrefManager.getInstance(SplashActivity.this).isLoggedIn()) {
                         Intent intent = new Intent(SplashActivity.this, HomeActivity.class);

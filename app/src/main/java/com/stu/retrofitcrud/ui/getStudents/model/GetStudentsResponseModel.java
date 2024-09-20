@@ -1,10 +1,9 @@
-package com.stu.retrofitcrud.addStudentsAndGetStudentsById;
-
+package com.stu.retrofitcrud.ui.getStudents.model;
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AddStudentsResponseModel {
-
+public class GetStudentsResponseModel {
 @SerializedName("status")
 @Expose
 private Boolean status;
@@ -13,7 +12,7 @@ private Boolean status;
 private String message;
 @SerializedName("data")
 @Expose
-private Data data;
+private List<GetStudentsListModel> data;
 
 public Boolean getStatus() {
 return status;
@@ -31,13 +30,12 @@ public void setMessage(String message) {
 this.message = message;
 }
 
-public Data getData() {
+public List<GetStudentsListModel> getData() {
 return data;
 }
 
-public void setData(Data data) {
+public void setData(List<GetStudentsListModel> data) {
 this.data = data;
 }
 
 }
-
